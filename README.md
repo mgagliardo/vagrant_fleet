@@ -17,7 +17,7 @@ $ sudo su -
 
 $ /usr/bin/fleet prepare db --mysql_address=172.17.0.1:3306 --mysql_database=fleet --mysql_username=kolide --mysql_password=potato --redis_address=172.17.0.1:6378 --server_cert=/root/keypair.crt --server_key=/root/keypair.key --logging_json --auth_jwt_key=changeme
 
-$ /usr/bin/fleet serve --mysql_address=172.17.0.1:3306 --mysql_database=fleet --mysql_username=kolide --mysql_password=potato --redis_address=172.17.0.1:6378 --server_cert=/root/keypair.crt --server_key=/root/keypair.key --logging_json --auth_jwt_key=changeme
+$ /usr/bin/fleet serve --mysql_address=172.17.0.1:3306 --mysql_database=fleet --mysql_username=kolide --mysql_password=potato --redis_address=172.17.0.1:6378 --server_cert=/root/keypair.crt --server_key=/root/keypair.key --logging_json --auth_jwt_key=changeme &
 ```
 
 * Access to the Fleet dashboard by opening your browser and heading to `https://192.168.48.10:8080/` (accept the self-signed cert and move on).
@@ -76,7 +76,7 @@ $ osqueryd \
     --distributed_tls_write_endpoint=/api/v1/osquery/distributed/write \
     --logger_plugin=tls \
     --logger_tls_endpoint=/api/v1/osquery/log \
-    --logger_tls_period=10
+    --logger_tls_period=10 &
 ```
 
 * That should be it, you should see your host added on the main dashboard and use Fleet.
