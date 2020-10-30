@@ -1,0 +1,15 @@
+[Unit]
+Description=Redis Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop redis
+ExecStartPre=-/usr/bin/docker rm -f redis
+ExecStartPre=/usr/bin/docker pull redis
+ExecStart=/usr/bin/docker run --rm --name %n -p 6379:6379 redis:6.0.8-alpine
+
+[Install]
+WantedBy=multi-user.target
