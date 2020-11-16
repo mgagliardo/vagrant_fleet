@@ -8,8 +8,8 @@ TimeoutStartSec=0
 Restart=always
 ExecStartPre=-/usr/bin/docker stop %n
 ExecStartPre=-/usr/bin/docker rm -f %n
-ExecStartPre=/usr/bin/docker pull mysql:5.7
-ExecStart=/usr/bin/docker run --rm --name %n --net=host -e MYSQL_ROOT_PASSWORD=tomato -e MYSQL_USER=kolide -e MYSQL_PASSWORD=potato -e MYSQL_DATABASE=fleet mysql:5.7
+ExecStartPre=/usr/bin/docker pull mysql:8
+ExecStart=/usr/bin/docker run --rm --name %n --net=host -e MYSQL_ROOT_PASSWORD=tomato -e MYSQL_USER=kolide -e MYSQL_PASSWORD=potato -e MYSQL_DATABASE=fleet mysql:8
 
 [Install]
 WantedBy=multi-user.target
